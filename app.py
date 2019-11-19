@@ -1,9 +1,12 @@
+'''Example app.py file. TODO - '''
 import pandas as pd
 import numpy as np
 import pickle
 
 # app
 app = Flask(__name__)
+
+# pickle.dump(model, open(‘model.pkl’, ‘wb’))
 
 # routes
 @app.route('/', methods=['POST'])
@@ -26,5 +29,4 @@ def predict():
     return jsonify(results=output)
 
 if __name__ == '__main__':
-    app.run(port = 5000, debug=True)
-# pickle.dump(model, open(‘model.pkl’, ‘wb’))
+    app.run(debug=True)
