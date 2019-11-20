@@ -12,12 +12,12 @@ def wrangle(df):
     """
     # List of most frequent amenities
     top_amenities_list = ['Wifi', 'Kitchen', 'Heating', 'Essentials',
-                          'Hair dryer', 'Laptop friendly workspace',
-                          'Hangers', 'Iron', 'Shampoo', 'TV', 'Hot water',
-                          'Internet', 'Host greets you', 'Smoke detector',
-                          'Buzzer/wireless intercom', 'Lock on bedroom door',
-                          'Refrigerator', 'Free street parking',
-                          'Dishes and silverware']
+                          'Hairdryer', 'Laptopfriendlyworkspace',
+                          'Hangers', 'Iron', 'Shampoo', 'TV', 'Hotwater',
+                          'Internet', 'Host greets you', 'Smokedetector',
+                          'Buzzer/wireless intercom', 'Lockonbedroomdoor',
+                          'Refrigerator', 'Freestreetparking',
+                          'Dishesandsilverware']
     # Copying dataframe to prevent errors
     df = df.copy()
 
