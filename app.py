@@ -1,5 +1,6 @@
 '''Example app.py file. TODO - '''
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pandas as pd
 import numpy as np
 import pickle
@@ -7,6 +8,7 @@ import pickle
 
 # app
 app = Flask(__name__)
+CORS(app)
 
 # Loading the model once it's available
 model = pickle.load(open('model.pkl', 'rb'))
@@ -18,6 +20,10 @@ def predict():
         try:
             # Requesting JSON data
             request_data = request.get_json(force=True)
+
+            # Turning data into pandas DataFrame for use in model
+            request_data.update((x,[y]) for x,y in request_data.items())
+            df = pd.DataFrame.from_dict(request_data)
 
             # Performing the manual equivalent of one-hot encoding for the top 20 most popular amenities.
             df['Wifi'] = df['amenities'].str.contains('Wifi')
@@ -40,16 +46,14 @@ def predict():
             df['Refrigerator'] = df['amenities'].str.contains('Refrigerator')
             df['Free street parking'] = df['amenities'].str.contains('Free street parking')
             df['Dishes and silverware'] = df['amenities'].str.contains('Dishes and silverware')
+            df = df.drop(columns='amenities')
 
             # creating dataframe variable from dictionary
-            df = pd.DataFrame.from_dict(x, orient='index').transpose()
-
-            # Turning data into pandas DataFrame for use in model
-            request_data.update((x,[y]) for x,y in request_data.items())
-            data_df = pd.DataFrame.from_dict(request_data)
+            ##Alternative to method above. Ran into errors 
+            #df = pd.DataFrame.from_dict(x, orient='index').transpose()
 
             # Make prediction based on created dataframe of user input data
-            result = model.predict(data_df)
+            result = model.predict(df)
 
             #Creating dict to convert to json and return
             output = {'result': int(result[0])}
