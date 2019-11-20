@@ -62,7 +62,7 @@ def create_app():
             print('request_data:', request_data)
 
             # Turning data into pandas DataFrame for use in model
-            data_df = pd.DataFrame.from_dict(request_data, orient='index')
+            data_df = pd.DataFrame.from_dict(request_data, orient='index').transpose
             print('data_df:',data_df)
 
             # Adding individual columns for each amenity
