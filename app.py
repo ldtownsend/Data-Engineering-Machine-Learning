@@ -19,6 +19,9 @@ def predict():
             # Requesting JSON data
             request_data = request.get_json(force=True)
 
+            # creating dataframe variable from dictionary
+            df = pd.DataFrame.from_dict(x, orient='index').transpose()
+
             # Turning data into pandas DataFrame for use in model
             request_data.update((x,[y]) for x,y in request_data.items())
             data_df = pd.DataFrame.from_dict(request_data)
