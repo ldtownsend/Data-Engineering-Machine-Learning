@@ -1,5 +1,10 @@
 """
 App factory to create AirBnB price prediction API
+
+__author__ = Patrick Dugovich, Xander Bennett, Andrew Archie, Luke Townsend
+__license__ = MIT License
+__version__ = 1.0
+
 """
 from .data_cleaning import wrangle
 from flask import Flask, request, jsonify
