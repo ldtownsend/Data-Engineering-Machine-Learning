@@ -19,26 +19,30 @@ def create_app():
     app = Flask(__name__)
     # CORS to try to prevent errors with web end
     CORS(app)
+
     # Loading model extracted from notebook
     model = pickle.load(open('model.pkl', 'rb'))
+
     parameters = [
         'neighbourhood_group_cleansed', 'bathrooms', 'bedrooms',
         'beds', 'bed_type', 'amenities', 'room_type', 'cleaning_fee',
         'security_deposit', 'minimum_nights'
-    ]
+        ]
+
+
     # routes
     @app.route('/', methods=['GET'])
     def predict():
         try:
             request_data = {}
             for param in parameters:
-                request_data.update(param=request.args.get(param))
+                request_data.update(param = request.args.get(param))
+ 
             print('request_data:', request_data)
 
             # Turning data into pandas DataFrame for use in model
-            #request_data.update((x, [y]) for x, y in request_data.items())
             data_df = pd.DataFrame.from_dict(request_data)
-            print('data_df:', data_df)
+            print('data_df:',data_df)
 
             # Adding individual columns for each amenity
             data_df = wrangle(data_df)
@@ -49,8 +53,11 @@ def create_app():
             # Creating dict to convert to json and return
             output = int(result[0])
 
-            return jsonify(estimated_price=output)
+            request_data.update(estimated_price=output)
+
+            return jsonify(request_data)
 
         except Exception as e:
             return jsonify({'Error': e})
+
     return app
