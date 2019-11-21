@@ -1,7 +1,7 @@
 """
 App factory to create AirBnB price prediction API
 
-__author__ = Patrick Dugovich, Xander Bennett, Andrew Archie, Luke Townsend
+__author__ = Patrick Dugovich, Xander Bennett, Luke Townsend
 __license__ = MIT License
 __version__ = 1.0
 
@@ -27,8 +27,7 @@ def create_app():
         'neighbourhood_group_cleansed', 'bathrooms', 'bedrooms',
         'beds', 'bed_type', 'amenities', 'room_type', 'cleaning_fee',
         'security_deposit', 'minimum_nights'
-        ]
-
+    ]
 
     # routes
     @app.route('/', methods=['GET'])
@@ -36,8 +35,10 @@ def create_app():
         try:
             request_data = {}
 
-            neighbourhood_group_cleansed = request.args.get('neighbourhood_group_cleansed')
-            request_data.update(neighbourhood_group_cleansed=neighbourhood_group_cleansed)
+            neighbourhood_group_cleansed = request.args.get(
+                'neighbourhood_group_cleansed')
+            request_data.update(
+                neighbourhood_group_cleansed=neighbourhood_group_cleansed)
             bathrooms = request.args.get('bathrooms')
             request_data.update(bathrooms=bathrooms)
             bedrooms = request.args.get('bedrooms')
@@ -58,12 +59,12 @@ def create_app():
             request_data.update(minimum_nights=minimum_nights)
             # for param in parameters:
             #     request_data.update(param = request.args.get(param))
- 
+
             print('request_data:', request_data)
 
             # Turning data into pandas DataFrame for use in model
             data_df = pd.DataFrame(request_data, index=[1])
-            print('data_df:',data_df)
+            print('data_df:', data_df)
 
             # Adding individual columns for each amenity
             data_df = wrangle(data_df)
