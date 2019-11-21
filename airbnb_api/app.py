@@ -3,7 +3,7 @@ App factory to create AirBnB price prediction API
 
 __author__ = Patrick Dugovich, Xander Bennett, Luke Townsend
 __license__ = MIT License
-__version__ = 1.0
+__version__ = 1.1
 
 """
 from .data_cleaning import wrangle
@@ -58,10 +58,13 @@ def create_app():
             minimum_nights = request.args.get('minimum_nights')
             request_data.update(minimum_nights=minimum_nights)
 
+            # This print statement is used for debugging.
             print('request_data:', request_data)
 
             # Turning data into pandas DataFrame for use in model
             data_df = pd.DataFrame(request_data, index=[1])
+
+            # This print statement is used when debugging
             print('data_df:', data_df)
 
             # Adding individual columns for each amenity
