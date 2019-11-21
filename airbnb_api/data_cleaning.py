@@ -14,8 +14,8 @@ def wrangle(df):
     top_amenities_list = ['Wifi', 'Kitchen', 'Heating', 'Essentials',
                           'Hairdryer', 'Laptopfriendlyworkspace',
                           'Hangers', 'Iron', 'Shampoo', 'TV', 'Hotwater',
-                          'Internet', 'Host greets you', 'Smokedetector',
-                          'Buzzer/wireless intercom', 'Lockonbedroomdoor',
+                          'Internet', 'Hostgreetsyou', 'Smokedetector',
+                          'Buzzer/wirelessintercom', 'Lockonbedroomdoor',
                           'Refrigerator', 'Freestreetparking',
                           'Dishesandsilverware']
     # Copying dataframe to prevent errors
