@@ -7,7 +7,7 @@ The Data Science team for this project had two focuses, described below:<br>
 
 Building and deploying a Flask API app to communicate price predictions to the back-end of the web app. Brainstorming with the back-end engineers, we settled on transmitting requests between their back-end server and our API via JSON object. Since the back-end server was coded in Javascript and our API was coded in Python, this approach allowed our python-specific research and modeling to be ingested by their back-end servers and for us to unpack any requests coming through our API and read by our model.<br>
 
-In addition to the repo, The API is also located [here](https://airbnb-prediction-api.herokuapp.com/)
+The API files can be found [here](https://github.com/AirBnB-Optimal-Price-1-LS/Data-Engineering-Machine-Learning/tree/master/airbnb_api)
 
 ## Machine Learning
 
