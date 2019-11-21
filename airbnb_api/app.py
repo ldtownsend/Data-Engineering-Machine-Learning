@@ -34,29 +34,10 @@ def create_app():
     def predict():
         try:
             request_data = {}
-
-            neighbourhood_group_cleansed = request.args.get(
-                'neighbourhood_group_cleansed')
-            request_data.update(
-                neighbourhood_group_cleansed=neighbourhood_group_cleansed)
-            bathrooms = request.args.get('bathrooms')
-            request_data.update(bathrooms=bathrooms)
-            bedrooms = request.args.get('bedrooms')
-            request_data.update(bedrooms=bedrooms)
-            beds = request.args.get('beds')
-            request_data.update(beds=beds)
-            bed_type = request.args.get('bed_type')
-            request_data.update(bed_type=bed_type)
-            amenities = request.args.get('amenities')
-            request_data.update(amenities=amenities)
-            room_type = request.args.get('room_type')
-            request_data.update(room_type=room_type)
-            cleaning_fee = request.args.get('cleaning_fee')
-            request_data.update(cleaning_fee=cleaning_fee)
-            security_deposit = request.args.get('security_deposit')
-            request_data.update(security_deposit=security_deposit)
-            minimum_nights = request.args.get('minimum_nights')
-            request_data.update(minimum_nights=minimum_nights)
+            
+            # For loop to populate dictionary with parameters from request
+            for param in parameters:
+                request_data.update({param: request.args.get(param)})
 
             # This print statement is used for debugging.
             print('request_data:', request_data)
