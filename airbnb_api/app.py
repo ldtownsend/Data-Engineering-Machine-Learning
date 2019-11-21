@@ -57,8 +57,6 @@ def create_app():
             request_data.update(security_deposit=security_deposit)
             minimum_nights = request.args.get('minimum_nights')
             request_data.update(minimum_nights=minimum_nights)
-            # for param in parameters:
-            #     request_data.update(param = request.args.get(param))
 
             print('request_data:', request_data)
 
