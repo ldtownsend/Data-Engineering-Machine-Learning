@@ -18,8 +18,6 @@ def wrangle(df):
                           'Buzzer/wirelessintercom', 'Lockonbedroomdoor',
                           'Refrigerator', 'Freestreetparking',
                           'Dishesandsilverware']
-    # Copying dataframe to prevent errors
-    # df = df.copy()
 
     # loop to create Boolean columns for each amenity
     for amenity in top_amenities_list:
