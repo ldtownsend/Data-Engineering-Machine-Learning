@@ -1,5 +1,7 @@
 """
-App factory to create AirBnB price prediction API. Given request, returns request plus predicted price.
+App factory to create AirBnB price prediction API.
+
+Given query string request, returns request plus predicted price.
 
 __author__ = Patrick Dugovich, Xander Bennett, Luke Townsend
 __license__ = MIT License
@@ -34,7 +36,7 @@ def create_app():
     @app.route('/', methods=['GET'])
     def predict():
         try:
-            # Dictionary to be populated with requests. To be converted to DataFrame.
+            # Dictionary to be populated with requests.
             request_data = {}
 
             # For loop to populate dictionary with parameters from request.
@@ -50,7 +52,7 @@ def create_app():
             # This print statement is used when debugging.
             print('data_df:', data_df)
 
-            # Engineering boolean column for each amenity, then dropping amenities feature.
+            # Engineering boolean column for each amenity, then drop amenities.
             data_df = wrangle(data_df)
 
             # Make prediction based on created DataFrame of user input data.
@@ -59,10 +61,10 @@ def create_app():
             # Setting output to the integer of the predicted price.
             output = int(result[0])
 
-            # Adding estimated price to the original dictionary containing request data.
+            # Adds estimated price to the dictionary containing request data.
             request_data.update(estimated_price=output)
 
-            # Returns JSON of the estimated price in addition to the original request data.
+            # Returns JSON of the estimated price plus to the request data.
             return jsonify(request_data)
 
         except Exception as e:
