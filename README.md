@@ -3,7 +3,7 @@
 
 Accessing the app can be done using this [link](https://determined-poitras-517882.netlify.com/index.html) and login info
 
-user:kevin
+user:kevin<br>
 password:kevin
 
 The Data Science team for this project had two focuses, described below:<br>
