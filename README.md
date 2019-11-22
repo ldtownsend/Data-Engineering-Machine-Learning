@@ -1,5 +1,10 @@
 
-# Data Science Repo for AirBnB Optimal Price Predictor
+# Data Science Repo for Airbnb Predictor
+
+Accessing the app can be done using this [link](https://determined-poitras-517882.netlify.com/index.html) and login info
+
+user:kevin
+password:kevin
 
 The Data Science team for this project had two focuses, described below:<br>
 
